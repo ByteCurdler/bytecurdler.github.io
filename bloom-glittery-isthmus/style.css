@@ -1,0 +1,45 @@
+html, body {
+  width: 100%;
+/*  text-align: center;*/
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  --optimal-size: calc( min(1vw, 1.3vh) );
+  background-color: #181a1b;
+  color: #e8e6e3;
+}
+
+#main {
+  width: 90%;
+  margin: auto;
+}
+
+* {
+  font-family: Quicksand, sans-serif;
+  font-weight: 300;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: #e8e6e333;
+  font-weight: 500;
+}
+
+.bar {
+  display: inline-block;
+  background-color: gray;
+  height: 1em;
+}
+
+.smallbar {
+    font-size: 0.1em;
+  line-height: 0;
+}
+
+.bar.section-red {
+  background-color: red;
+}
+
+.bar.section-blue {
+  background-color: blue;
+}

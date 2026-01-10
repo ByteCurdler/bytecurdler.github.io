@@ -1,0 +1,151 @@
+@font-face {
+  font-family: 'SGA';
+  src: url('standard_galactic_alphabet.ttf'), url("standard_galactic_alphabet.otf"), url("standard_galactic_alphabet.woff");
+  font-weight: normal;
+  font-style: normal;
+  /* license: /OFL.txt */
+}
+
+@font-face {
+  font-family: 'Fairfax';
+  src: url("FairfaxSMHD.otf");
+  font-weight: normal;
+  font-style: normal;
+  /* license: /OFL.txt */
+}
+
+* { 
+  user-select: none;
+}
+
+html, body {
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #27272b;
+  color: #ffffff;
+  font-family: Fairfax, SGA, Wingding, serif;
+}
+
+body {
+  padding: 10px;
+}
+
+#game {
+  filter: drop-shadow(0px 0px 4px black);
+}
+
+#cells {
+  width: 350px;
+  margin: auto;
+}
+
+#keyboard {
+  width: auto;
+  margin: auto;
+  text-align: center;
+}
+
+.row {
+  width: auto;
+  height: 65px;
+  text-align: center;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border: 2px solid #3b3b40;
+  text-align: center;
+  line-height: 46px;
+  margin: 6px;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 0;
+  font-size: 40px;
+}
+
+.button {
+  margin: 10px auto ;
+  width: 200px;
+  height: 55px;
+  border: 2px solid #3b3b40;
+  line-height: 55px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #56565d;
+  font-size: 35px;
+  box-sizing: border-box;
+}
+
+
+.kb_row {
+  width: auto;
+  min-height: 47px;
+  text-align: center;
+}
+
+#status {
+  margin: 10px auto;
+  height: 45px;
+  line-height: 25px;
+/*   background-color: #27272b; */
+  border: 2px solid #3b3b40;
+  color: #ffffff;
+  font-size: 19px;
+  width: fit-content;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  transform: perspective(1em);
+}
+
+.key {
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+  border: 2px solid #3b3b40;
+  line-height: 45px;
+  text-align: center;
+  margin: 1px;
+  color: #ffffff;
+  font-size: 19px;
+  box-sizing: border-box;
+}
+
+.widekey {
+  width: 92px;
+  background-color: #27272b;
+}
+
+.spacekey {
+  width: 139px;
+}
+
+.cell_content {
+  border-color: #777788;
+}
+
+.cell_correct {
+/*   background-color: #27afc2; */
+  border-color: #27afc2;
+  filter: drop-shadow(0px 0px 5px rgb(39, 175, 194, 100%)) drop-shadow(0px 0px 3px rgb(39, 175, 194, 100%));
+}
+
+.key.cell_correct {
+  filter: drop-shadow(0px 0px 3px rgb(39, 175, 194, 100%));
+}
+
+.cell_misplaced {
+/*   background-color: #d18224; */
+  border-color: #d18224;
+  filter: drop-shadow(0px 0px 2px rgb(209, 130, 36, 100%));
+}
+
+.cell_wrong {
+/*   background-color: #191a1e88; */
+  border-color: #2b2b30;
+  color: #999999;
+  opacity: 0.5;
+}

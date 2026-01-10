@@ -1,0 +1,22 @@
+.track-content {
+    height: 156px;
+    border: 1px solid white;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    box-sizing: content-box;
+    position: relative;
+    background-image: url("/fancy_bg.png");
+    background-attachment: local;
+    background-blend-mode: overlay;
+    background-color: #1e1e2ecc;
+}
+
+html {
+    background-color: #1e1e2e;
+    color: #fefefe;
+}
+
+@keyframes changeColor {
+    from { background-color: red; }
+    to { background-color: blue; }
+  }

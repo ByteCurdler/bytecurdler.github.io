@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- 
+      This is an HTML comment
+      You can write text in a comment and the content won't be visible in the page
+    -->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="ICONHERE" />
+
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>FLL Timer</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="timer">
+      -:--.-
+    </div>
+    <div id="buttonbar">
+      <div id="reset">
+        reset
+      </div>
+      <div id="reset_frc">
+        reset but for frc teleop
+      </div>
+    </div>
+    <script src="data.js" defer></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="font.css" defer />
+    
+    <audio id="sfx-start" preload="auto">
+      <source src="match_start.ogg" type="audio/ogg">
+    </audio>
+    <audio id="sfx-end" preload="auto">
+      <source src="match_end.ogg" type="audio/ogg">
+    </audio>
+  </body>
+</html>

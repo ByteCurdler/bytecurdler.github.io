@@ -1,0 +1,31 @@
+* {
+  transform-style: preserve-3d;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 50vw;
+  padding-top: 50vh;
+  overflow: hidden;
+}
+
+body {
+  width: 0;
+  height: 0;
+  overflow: visible;
+}
+
+img.face {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+  position: absolute;
+}

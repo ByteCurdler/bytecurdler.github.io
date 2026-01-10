@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yeepmidi</title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="icon" href="/noteblocks/E4.png" type="image/x-icon">
+</head>
+<body>
+    <input type="file" id="midifile" accept=".mid,.kar,.rmi,audio/midi,audio/x-midi"><br>
+    <label for="autoscroll">Autoscroll</label><input type="checkbox" id="autoscroll"><br>
+    <button onclick="reloadaudio()">Reload Audio</button><br>
+    <button onclick="shiftNotes(12)">Octave Up</button>
+    <button onclick="shiftNotes(-12)">Octave Down</button><br>
+    <label for="snapmode">Snap Notes:</label><select id="snapmode" onchange="generateTracks()">
+        <option value="none">No</option>
+        <option value="up">Yes, prefer up</option>
+        <option value="down">Yes, prefer down</option>
+      </select>
+    <hr />
+    <div id="target">
+        Tracks will go here.
+    </div>
+    <script src="https://unpkg.com/tone"></script>
+    <script src="https://unpkg.com/@tonejs/midi"></script>
+    <script src="/index.js"></script>
+</body>
+</html>

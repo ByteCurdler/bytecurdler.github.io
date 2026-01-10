@@ -1,0 +1,68 @@
+html, body {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  --optimal-size: calc( min(1vw, 1.3vh) );
+  background-color: #181a1b;
+  color: #e8e6e3;
+}
+
+#main {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+* {
+  font-family: Quicksand, sans-serif;
+  font-weight: 300;
+}
+
+#itis, #oclock {
+  font-size: 4vw;
+  font-size: calc( var(--optimal-size) * 4);
+}
+
+#team {
+  font-size: 8vw;
+  font-size: calc( var(--optimal-size) * 8);
+  font-weight: 500;
+}
+
+#teamextra {
+  font-size: 2vw;
+  font-size: calc( var(--optimal-size) * 2);
+  margin-bottom: 2vw;
+  margin-bottom: calc( var(--optimal-size) * 2);
+  opacity: 0.8;
+}
+
+#timestyle {
+  font-size: calc( min(5vw, 2vh) );
+  position: fixed;
+  bottom: 1ch;
+  left: 50;
+  margin-left: -7.5ch;
+  width: 15ch;
+  box-sizing: border-box;
+  border: 2px #e8e6e3 solid;
+  color: inherit;
+  border-radius: 1ch;
+  background-color: transparent;
+  transition: scale .07s;
+  scale: 1 1;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: #e8e6e333;
+  font-weight: 500;
+}
+
+#timestyle:active {
+  scale: 0.95 1;
+}

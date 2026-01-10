@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!--
+      This is the page head - it contains info the browser uses
+      Like the title, which appears on the browser tab but not inside the page
+      Further down you'll see the content that displays in the page
+    -->
+    <title>which teams have the closest numbers?</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap">
+
+    <meta name="viewport" content="width=500px, initial-scale=1.0" />
+
+    
+    <!-- The website JavaScript file -->
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div id="main">
+      <form id="interface" target="#" onsubmit="return false">
+        events:
+        <br>
+        <input id="events" value="2025joh,2025mil,2025hop,2025new" placeholder="2025joh,2025mil">
+        <br><div style="height: 2px;"></div>
+        <input type="submit" onclick="go()" value="Check">
+      </form>
+      <hr />
+      <div id="log">
+        
+      </div>
+    </div>
+  </body>
+</html>
