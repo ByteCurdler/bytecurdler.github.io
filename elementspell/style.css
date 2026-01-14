@@ -1,0 +1,30 @@
+.element {
+  border: solid 2px gray;
+  padding: 2px;
+  margin: 2px;
+}
+
+.element::hover:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-width: 10px;
+      border-style: solid;
+      border-color: #FFFFFF transparent transparent transparent;
+      top: 44px;
+      left: 50px;
+}
+
+div {
+  min-height: 1.5em;
+  width: 75ch;
+}
+
+input {
+  width: 74ch;
+}
+
+#output {
+  line-height: 1.75em;
+}
