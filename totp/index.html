@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOTP</title>
+    <style>
+        body {
+            font-size: 20px;
+            font-family: monospace;
+        }
+        totp {
+            display: inline-block;
+            border: 2px solid black;
+            border-radius: 5px;
+            box-sizing: border-box;
+            padding: 2px;
+            margin: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="pw" oninput="changeKey(this.value)" type="password"> <br />
+    g <br />
+    &nbsp;bc <totp key="23PLRN37MMVTUSFK"></totp><br />
+    s <br />
+    &nbsp;cw <totp key="IOTNRKLDQNDSEZ2L"></totp><br />
+    &nbsp;bs <totp key="S4MIPWLTX5JAAVKP"></totp><br />
+    <script type="module">
+        import { TOTP } from 'https://esm.run/totp-generator';
+        import * as base32 from 'https://esm.run/hi-base32';
+
+        const TOTP_OPT = {
+            explicitZeroPad: true
+        }
+
+        let totps = []
+
+        function crypt(totp, xorkey) {
+            let encoded = totp.srckey.map((n, i) => n ^ xorkey[i] ^ xorkey[i + 5])
+
+            totp.key = encodeKey(encoded)
+            totp.go()
+        }
+
+        function decodeKey(key) {
+            return new Uint16Array(new Uint8Array(base32.decode.asBytes(key)).buffer)
+        }
+
+        function encodeKey(array) {
+            return base32.encode(new Uint8Array(array.buffer))
+        }
+
+        async function sha1(txt) {
+            return new Uint16Array(await crypto.subtle.digest(
+                {
+                    name: "SHA-1",
+                },
+                new TextEncoder().encode(txt)
+            ))
+        }
+
+        window.findkey = function (realkey, pw) {
+            (async () => {
+                let totp = { srckey: decodeKey(realkey), go: () => console.log(totp.key) }
+                crypt(totp, await sha1(pw))
+            })()
+        }
+
+        let nullsha1 = await sha1("")
+
+        let next_expiry = Date.now()
+
+        // there's probably a better way to do this but meh
+        let style = document.createElement('style');
+        document.head.appendChild(style);
+        (function tick() {
+            requestAnimationFrame(tick)
+            let now = Date.now()
+            let progress = (next_expiry - now) / 30000
+            style.innerHTML = `totp {
+                --point: ${progress * 100}%;
+                background: linear-gradient(
+                    95deg,
+                    #dfd        calc(var(--point) - 1.5px),
+                    #3a3        calc(var(--point) - 1px),
+                    #3a3        calc(var(--point) + 1px),
+                    transparent calc(var(--point) + 1.5px)
+                );
+            }`
+        })()
+
+        {
+            [...document.getElementsByTagName("totp")].forEach(e => {
+                let totp = { srckey: decodeKey(e.getAttribute("key")), go: go }
+                async function go() {
+                    var { otp, expires } = await TOTP.generate(totp.key, TOTP_OPT)
+                    e.innerText = otp.slice(0,3) + " " + otp.slice(3)
+                    setTimeout(go, expires - Date.now())
+                    next_expiry = Math.max(next_expiry, expires)
+                }
+                totps.push(totp)
+                crypt(totp, nullsha1)
+            })
+        }
+
+        window.changeKey = async function (key) {
+            console.debug(key)
+            let sha1key = await sha1(key)
+            totps.forEach(t => crypt(t, sha1key))
+        }
+        changeKey(document.getElementById("pw").value)
+    </script>
+</body>
+
+</html>
