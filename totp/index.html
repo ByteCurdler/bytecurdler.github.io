@@ -25,6 +25,7 @@
     <input id="pw" oninput="changeKey(this.value)" type="password"> <br />
     g <br />
     &nbsp;bc <totp key="23PLRN37MMVTUSFK"></totp><br />
+    &nbsp;ig <totp key="I4MFKC4PMTRHFTTO"></totp><br />
     s <br />
     &nbsp;cw <totp key="IOTNRKLDQNDSEZ2L"></totp><br />
     &nbsp;bs <totp key="S4MIPWLTX5JAAVKP"></totp><br />
@@ -107,7 +108,6 @@
         }
 
         window.changeKey = async function (key) {
-            console.debug(key)
             let sha1key = await sha1(key)
             totps.forEach(t => crypt(t, sha1key))
         }
